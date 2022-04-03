@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%block 'conteudo'%}
+{% include 'parciais/_messages.html' %}
+<a class="voltar" href="{% url 'dashboard' %}">voltar</a>
+<form class="form-addlivro" action="{% url 'addlivro' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    <br>
+    <div class="g-recaptcha" data-sitekey="6LddFBcfAAAAAIAjCuaLGJ7DbS-2Mbbnk-7YRvA6"></div>
+      <br/>
+    <button type="submit">ENVIAR</button>
+</form>
+<a class="voltar" href="{% url 'dashboard' %}">voltar</a>
+{%endblock%}

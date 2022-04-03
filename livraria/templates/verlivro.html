@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block 'titulo'%} {{ livro.titulo }} {%endblock%}
+{%block 'conteudo'%}
+    <h1>{{ livro.titulo }}</h1>
+    <div class="div-detalhe">
+        <table style="max-width: 350px;">
+            <tr>
+                <th>Categoria</th>
+                <td>{{ livro.categoria }}</td>
+                <th>Autor</th>
+                <td>{{ livro.autor }}</td>
+                <th>Descrição</th>
+                <td>{{ livro.descricao }}</td>
+                <th>Adcionado</th>
+                <td>{{ livro.adcionado|date:'d/m/Y H:m:s' }}</td>
+            </tr>
+        </table>
+        {% if livro.imagem %}
+            <img id="imagem-detalhe-livro" src="{{ livro.imagem.url }}">
+        {%endif%}
+    </div>
+    <span class="area-voltar">
+        <a class="voltar" href="{%url 'index'%}">voltar</a>
+    </span>
+{%endblock%}

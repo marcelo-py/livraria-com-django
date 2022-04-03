@@ -1,0 +1,86 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block 'titulo'%}{%endblock%}
+
+{%block 'conteudo'%}
+    {% include 'parciais/_messages.html' %}
+    <div id="areaavo">
+        <section id="area_livros">
+            {%for livro in livros%}
+                <div id="caixa_livros">
+                    <div id="caixadacaixadelivros">
+                        <div id="caixadacaixadacaixa">
+                            <a id="linklivro_texto" href="{% url 'verlivro' livro.id %}"><h5>{{ livro.titulo }}</h5></a> 
+                            {%if livro.imagem%}
+                                <a id="linklivro_img" href="{% url 'verlivro' livro.id %}"><img src="{{ livro.imagem.url }}"></a>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div id="previalivro">
+                        <table>
+                            <tr>
+                                <th>Categoria</th>
+                                <td>{{ livro.categoria }}</td>
+                                <th>Descrição</th>
+                                <td>{{ livro.descricao }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            {%endfor%}
+        </section>
+        <img id="sugestoes-img" src="{% static 'imagens/pagina_inicial/sugestoes.png' %}">
+        <section id="destaques">
+            <h4 id="destaque-titulo">Sugestões</h4>
+            <div>
+                <a href="{% url 'verlivro' destaque.id %}">
+                    <h5>{{ destaque.titulo }}</h5>
+                </a>
+                <p style="height: 150px; overflow: hidden; word-wrap: break-word;">
+                    <strong>Descrição: </strong>{{ destaque.descricao }}
+                </p>
+                {% if destaque.imagem %}
+                    <div style="text-align: center;">
+                        <a href="{% url 'verlivro' destaque.id %}">
+                            <img src="{{ destaque.imagem.url }}">
+                        </a>
+                    </div>
+                {%endif%}
+            </div>
+        </section>
+    </div>
+    
+
+    <footer class="rodape">
+        <div class="area-pages">
+            <span class="row-pages">
+                <ul>
+                    {% if livros.number|add:'-4' > 1 %}
+                        <li class="numpages-li">
+                            <a class="numpages-a" href="?page={{ livros.number|add:'-5' }}&termo={{ request.GET.termo }}">&hellip;</a>
+                        </li>
+                    {% endif %}
+                    {% for i in livros.paginator.page_range %}
+                        {% if livros.number == i %}
+                            <li class="numpages-activate">
+                                <a class="numpages-a" href="?page={{ i }}&termo={{ request.GET.termo }}">{{ i }}</a>
+                            </li>
+                        {% elif i > livros.number|add:'-5' and i < livros.number|add:'5' %}
+                            <li class="numpages-li">
+                                <a class="numpages-a" href="?page={{ i }}&termo={{ request.GET.termo }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if livros.paginator.num_pages > livros.number|add:'4' %}
+                        <li class="numpages-li">
+                            <a class="numpages-a" href="?page={{ livros.number|add:'5' }}&termo={{ request.GET.termo }}">&hellip;</a>
+                        </li>
+                    {% endif %}
+                  </ul>
+            </span>
+        </div>
+    </footer>
+    
+        
+{%endblock%}

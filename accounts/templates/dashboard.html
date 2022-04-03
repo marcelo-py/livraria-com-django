@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'conteudo'%}
+    {% include 'parciais/_messages.html' %}
+    
+    <h2 style="display: inline-block; margin-left: 5px;">Bem vindo {{ user }}</h2>
+    <div class="secaodash">
+        <a href="{% url 'addlivro' %}">Adcionar Livro</a>
+        <a href="{% url 'logout' %}">Sair</a>
+    </div>
+{%endblock%}

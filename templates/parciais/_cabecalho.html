@@ -1,0 +1,11 @@
+{% load static %}
+<header>
+    <a href="{% url 'index' %}"><h1 class="h1-titulo">donos do livro</h1></a>
+    <a href="{% url 'index_login' %}"><img class="img-menu" src="{% static 'imagens/pagina_inicial/perfil.png' %}"></a>
+    {% if request.path == '/' or 'busca' in request.path %}
+    <form class="form-buscas" action="{% url 'busca' %}" method="get">
+        <input class="buscar" placeholder="buscar livro" type="search" name="termo" value="{{ request.GET.termo }}">
+    </form>
+    {% endif %}
+</header>
+

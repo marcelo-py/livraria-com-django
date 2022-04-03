@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block 'conteudo' %}
+    <h1>pagina de login</h1>
+    {% include 'parciais/_messages.html' %}
+    <form method="post" action="{% url 'login' %}" class="form-cadastro">
+        {% csrf_token %}
+        <div class="div-form">
+            <label for="usuario-login">Usuario</label>
+            <input type="text" name="usuario" id="usuario-login" class="inputs-form">
+        </div>
+        <div class="div-form">
+            <label for="senha-login">Senha</label>
+            <input type="password" name="senha" id="senha-login" class="inputs-form">
+        </div>
+        <button type="submit" class="btn-forms">Entrar</button>
+    </form>
+    <a href="{% url 'cadastro' %}">CADASTRAR</a>
+{% endblock %}
