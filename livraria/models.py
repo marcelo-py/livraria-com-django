@@ -16,6 +16,7 @@ class Livro(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
     adcionado = models.DateTimeField(default=timezone.now)
     imagem = models.ImageField(blank=True, upload_to='imagens/%Y/%m/%d')
+    link_para_ler = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
         return self.titulo

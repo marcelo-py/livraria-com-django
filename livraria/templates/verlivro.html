@@ -16,9 +16,13 @@
                 <td>{{ livro.adcionado|date:'d/m/Y H:m:s' }}</td>
             </tr>
         </table>
+        
         {% if livro.imagem %}
             <img id="imagem-detalhe-livro" src="{{ livro.imagem.url }}">
         {%endif%}
+        {% if livro.link_para_ler %}
+            <a style="display: block; font-size: 17px; color: brown; text-decoration:underline;" href="{{ livro.livro.link_para_ler }}">Ir ler livro</a>
+        {% endif %}
     </div>
     <span class="area-voltar">
         <a class="voltar" href="{%url 'index'%}">voltar</a>

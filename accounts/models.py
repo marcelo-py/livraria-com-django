@@ -6,5 +6,5 @@ from django import forms
 class FormLivro(forms.ModelForm):
     class Meta:
         model = Livro
-        exclude = ()
+        exclude = ('adcionado',)
 
