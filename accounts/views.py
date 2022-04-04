@@ -1,10 +1,10 @@
+import requests
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import FormLivro
-import requests
 from json import loads
 
 
