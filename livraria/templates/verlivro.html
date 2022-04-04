@@ -21,7 +21,7 @@
             <img id="imagem-detalhe-livro" src="{{ livro.imagem.url }}">
         {%endif%}
         {% if livro.link_para_ler %}
-            <a style="display: block; font-size: 17px; color: brown; text-decoration:underline;" href="{{ livro.livro.link_para_ler }}">Ir ler livro</a>
+            <a style="display: block; font-size: 17px; color: brown; text-decoration:underline;" href="{{ livro.link_para_ler }}" target="_blank" rel="external">Ir ler livro</a>
         {% endif %}
     </div>
     <span class="area-voltar">
